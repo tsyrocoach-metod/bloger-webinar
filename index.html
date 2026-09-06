@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вебинар «Блогер с нуля» – 15 сентября, 15:00 мск</title>
+<meta name="description" content="Бесплатный онлайн-вебинар Виктории Ложниковой: как перестать ждать идеального момента, победить самозванца и построить систему, которая приносит деньги на любой площадке. 15 сентября, 15:00 мск.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ДИЗАЙН-КИТ FITSTARS «БЛОГЕР С НУЛЯ»
+   Доминанты – белый и графит. Салатовый – только кнопки и
+   ключевые маркеры, не больше 5–7% экрана.
+   ТИПОГРАФИЧЕСКАЯ ШКАЛА – 4 роли (канон B2)
+   Р1 Заголовок     Unbounded 800 – hero (--h1) и секции (--h2)
+   Р2 Подзаголовок  Manrope 700, 20px – заголовки карточек
+   Р3 Текст         Manrope 400/500, 17px – всё остальное
+   Р4 Метка         Manrope 700, 12px, CAPS, tracking
+   Выделение – только жирностью и салатовым маркером. Курсива нет.
+   Мелкий шрифт (--fine, 13px) – только служебные подписи.
+   Крупные цифры (счётчик) – декоративные, ролями не считаются.
+   ============================================================ */
+:root{
+  --ink:#1A1A1A;
+  --ink-2:#4A4D52;
+  --ink-3:#8A8E94;
+  --accent:#C4F542;
+  --accent-strong:#B8E83D;
+  --accent-ink:#0F1A00;
+  --accent-wash:#F3FBDD;
+  --accent-line:#DCF09A;
+  --line:#E4E6E9;
+  --surface:#FFFFFF;
+  --wash:#F5F6F7;
+  --dark:#151714;
+  --dark-2:#1F221D;
+  --radius:20px;
+  --radius-lg:26px;
+  --shadow:0 18px 44px -26px rgba(16,18,20,.28);
+  --maxw:1120px;
+  --h1:clamp(30px,3.3vw,42px);
+  --h2:clamp(27px,3.4vw,40px);
+  --sub:20px;
+  --text:17px;
+  --fine:13px;
+  --label:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:var(--text);line-height:1.55;color:var(--ink);font-weight:500;
+  background:#FFFFFF;-webkit-font-smoothing:antialiased;text-wrap:pretty;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2{font-family:'Unbounded',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h1{font-size:var(--h1)}
+h2{font-size:var(--h2)}
+/* салатовый маркер под словами – единственный способ выделить текст цветом */
+.mark{background:linear-gradient(transparent 62%,var(--accent) 62%);padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.band-dark .mark{background:linear-gradient(transparent 62%,rgba(196,245,66,.55) 62%)}
+.nw{white-space:nowrap}
+b,strong{font-weight:700;color:var(--ink)}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--accent-strong);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* scroll-reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.grid > .reveal:nth-child(2){transition-delay:.06s}
+.grid > .reveal:nth-child(3){transition-delay:.12s}
+.grid > .reveal:nth-child(4){transition-delay:.18s}
+.grid > .reveal:nth-child(5){transition-delay:.24s}
+.grid > .reveal:nth-child(6){transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}
+
+/* ---------- atoms ---------- */
+.label{font-weight:700;font-size:var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);
+  display:inline-flex;align-items:center;gap:10px}
+.label::before{content:"";width:18px;height:4px;border-radius:2px;background:var(--accent);flex-shrink:0}
+.band-dark .label{color:#C9CDC2}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;cursor:pointer;border:none;
+  font-family:inherit;font-weight:700;font-size:16px;min-height:56px;padding:0 32px;border-radius:999px;
+  background:linear-gradient(100deg,#C4F542 0%,#DDFF7A 30%,#C4F542 55%,#B8E83D 80%,#C4F542 100%);
+  background-size:230% 100%;animation:btnflow 5s ease-in-out infinite;
+  color:var(--accent-ink);text-decoration:none;transition:transform .18s ease, box-shadow .18s ease;
+  box-shadow:0 16px 34px -16px rgba(150,200,30,.7)}
+@keyframes btnflow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.btn:hover{transform:translateY(-2px);box-shadow:0 22px 44px -16px rgba(150,200,30,.8)}
+.btn .arw{transition:transform .18s ease}
+.btn:hover .arw{transform:translateX(4px)}
+.btn-ghost{animation:none;background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.btn-ghost:hover{background:var(--wash);box-shadow:none;transform:none;border-color:#CFD3D8}
+.btn-sm{min-height:46px;font-size:15px;padding:0 22px}
+.fine{font-size:var(--fine);color:var(--ink-2);font-weight:500}
+.date-pill{display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--line);font-weight:600;font-size:15px;box-shadow:var(--shadow)}
+.date-pill .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0;box-shadow:0 0 0 3px var(--accent-wash)}
+.date-pill b{font-weight:700}
+
+/* ---------- sticky header ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .2s ease, box-shadow .2s ease}
+.hdr.stuck{border-color:var(--line);box-shadow:0 8px 24px -20px rgba(16,18,20,.5)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:78px;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-logo{height:30px;width:auto;display:block}
+.brand-tag{font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px;background:var(--wash);border:1px solid var(--line);white-space:nowrap}
+.hdr-mid{display:flex;flex-direction:column;gap:2px;line-height:1.3}
+.hdr-mid .label{font-size:11px}
+.hdr-mid .when{font-weight:600;font-size:15px}
+.hdr-mid .when b{font-weight:800}
+.hdr-cta{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.hdr-gift{font-size:12.5px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.hdr-gift b{font-weight:700}
+
+/* ---------- full-bleed chapter bands ---------- */
+.band-dark{background:var(--dark);color:#fff;position:relative;overflow:hidden}
+.band-dark::before{content:"";position:absolute;right:-8%;top:-40%;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,245,66,.13),transparent 70%);pointer-events:none}
+.band-dark b,.band-dark strong{color:#fff}
+.band-tint{background:var(--wash);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 72px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 480px at 92% -10%, #EEF9CC 0%, rgba(238,249,204,0) 60%),
+    radial-gradient(700px 520px at -5% 10%, #F1F2EE 0%, rgba(241,242,238,0) 55%),
+    linear-gradient(180deg,#FAFBF7 0%, #FFFFFF 92%);}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center}
+.hero .label{margin-bottom:18px}
+.hero h1{margin-bottom:22px}
+.hero h1 .pre{display:block;font-size:.62em;font-weight:700;color:var(--ink-2);margin-bottom:10px;letter-spacing:0}
+.hero-lead{max-width:560px;margin-bottom:6px;color:var(--ink)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin:18px 0 0;list-style:none}
+.hero-meta li{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px}
+.hero-meta li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.hero-cta{display:flex;align-items:center;gap:16px;margin-top:30px;flex-wrap:wrap}
+/* цитата-крючок */
+.quote-card{position:relative;background:var(--dark);color:#fff;border-radius:var(--radius-lg);padding:38px 36px 32px;
+  box-shadow:0 34px 66px -32px rgba(16,18,20,.6);overflow:hidden}
+.quote-card::after{content:"";position:absolute;right:-70px;bottom:-90px;width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,245,66,.28),transparent 70%);pointer-events:none}
+.quote-card .qm{font-family:'Unbounded',sans-serif;font-weight:800;font-size:64px;line-height:1;color:var(--accent);display:block;margin:-10px 0 6px}
+.quote-card blockquote{font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(20px,2vw,25px);line-height:1.28;letter-spacing:-.01em;position:relative;z-index:1}
+.quote-card figcaption{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.quote-card .av{width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0}
+.quote-card .who{font-weight:700;font-size:15px;line-height:1.3}
+.quote-card .who span{display:block;font-weight:500;color:#B9BDB3;font-size:13px}
+
+/* ---------- плашка регистрации + таймер (тёмный блок) ---------- */
+.reg-timer{margin-top:44px;background:var(--dark);color:#fff;border-radius:var(--radius-lg);padding:40px 44px;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden}
+.reg-timer::before{content:"";position:absolute;right:-4%;top:-40%;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,245,66,.16),transparent 70%);pointer-events:none}
+.rt-left{position:relative;z-index:1;padding-right:44px}
+.rt-right{position:relative;z-index:1;padding-left:44px;border-left:1px solid rgba(255,255,255,.12)}
+.rt-when{font-weight:700;font-size:18px}
+.rt-when b{color:var(--accent)}
+.rt-sub{font-size:15px;color:#B9BDB3;margin:5px 0 20px}
+.clock{display:flex;gap:12px}
+.unit{min-width:74px;text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:15px;padding:12px 8px;animation:pulse 2.6s ease-in-out infinite}
+.unit:nth-child(2){animation-delay:.15s}
+.unit:nth-child(3){animation-delay:.3s}
+.unit:nth-child(4){animation-delay:.45s}
+.unit b{display:block;font-family:'Unbounded',sans-serif;font-size:29px;font-weight:800;line-height:1;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.unit span{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#B9BDB3;margin-top:7px;display:block}
+@keyframes pulse{0%,100%{box-shadow:0 8px 22px -14px rgba(196,245,66,.2);transform:translateY(0)}
+  50%{box-shadow:0 14px 34px -10px rgba(196,245,66,.45);transform:translateY(-2px)}}
+@media (prefers-reduced-motion:reduce){.unit,.btn{animation:none}}
+.rt-right h2{font-size:26px;margin-bottom:10px}
+.rt-right p{color:#CFD3C8;margin-bottom:22px;max-width:440px}
+.rt-right .btn{margin-bottom:12px}
+.rt-right .fine{color:#B9BDB3;display:block}
+.rt-right .fine b{color:#fff}
+
+/* ---------- section rhythm ---------- */
+.sec{padding:92px 0}
+.sec-head{max-width:860px;margin-bottom:44px}
+.sec-head .label{margin-bottom:14px}
+.sec-head h2{margin-bottom:14px}
+.sec-head p{color:var(--ink-2);text-wrap:balance}
+.sec-head.center{text-align:center;margin-left:auto;margin-right:auto;max-width:720px}
+
+/* ---------- «Это про тебя, если…» ---------- */
+.pains{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pain{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:var(--radius);
+  background:var(--surface);border:1px solid var(--line);transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+.pain:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#D2D6DB}
+.pain .n{flex-shrink:0;width:38px;height:38px;border-radius:12px;background:var(--dark);color:var(--accent);
+  font-family:'Unbounded',sans-serif;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.pain p{color:var(--ink)}
+.pain.full{grid-column:1/-1;background:var(--accent-wash);border-color:var(--accent-line)}
+
+/* ---------- программа ---------- */
+.prog{display:flex;flex-direction:column;gap:14px}
+.prog-item{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:flex-start;padding:24px 26px;
+  border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+.prog-item:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#D2D6DB}
+.prog-item .ck{font-size:22px;line-height:1;margin-top:3px}
+.prog-item h3{font-size:var(--sub);font-weight:700;margin-bottom:6px;font-family:inherit;letter-spacing:0}
+.prog-item p{color:var(--ink-2)}
+
+/* ---------- кому подойдёт ---------- */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:#D2D6DB;box-shadow:var(--shadow)}
+.card .ic{width:50px;height:50px;border-radius:14px;background:var(--accent-wash);border:1px solid var(--accent-line);
+  display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:16px}
+.card h3{font-size:var(--sub);font-weight:700;margin-bottom:7px;font-family:inherit;letter-spacing:0}
+.card p{color:var(--ink-2)}
+.level{margin-top:22px;display:flex;align-items:center;gap:14px;padding:18px 24px;border-radius:var(--radius);
+  background:var(--dark);color:#fff;flex-wrap:wrap}
+.level .label{color:#C9CDC2}
+.level p{font-weight:600}
+
+/* ---------- спикер ---------- */
+.speaker{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;position:relative;z-index:1}
+.sp-photo{width:250px;height:300px;border-radius:22px;object-fit:cover;object-position:center 20%;
+  border:3px solid rgba(255,255,255,.16);box-shadow:0 26px 54px -22px rgba(0,0,0,.65);display:block}
+.sp-photo-ph{width:250px;height:300px;border-radius:22px;background:var(--dark-2);border:2px dashed rgba(255,255,255,.28);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px;color:#B9BDB3}
+.sp-photo-ph .av{width:74px;height:74px;border-radius:50%;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-weight:800;font-size:24px}
+.sp-photo-ph span{font-size:var(--fine);font-weight:600}
+.sp-body .label{margin-bottom:12px}
+.sp-name{font-family:'Unbounded',sans-serif;font-weight:700;font-size:28px}
+.sp-role{font-weight:600;font-size:15px;color:var(--accent);margin:8px 0 18px}
+.sp-facts{list-style:none;display:flex;flex-direction:column;gap:12px}
+.sp-facts li{display:flex;gap:12px;align-items:flex-start;color:#D9DCD3}
+.sp-facts .mk{flex-shrink:0;width:24px;height:24px;border-radius:8px;background:rgba(196,245,66,.14);border:1px solid rgba(196,245,66,.35);
+  color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:2px}
+.sp-accent{margin-top:22px;display:block;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:14px 20px;font-weight:700}
+
+/* ---------- что получат ---------- */
+.gifts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.gift{display:flex;gap:18px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease}
+.gift:hover{transform:translateY(-3px);border-color:#D2D6DB;box-shadow:var(--shadow)}
+.gift .em{flex-shrink:0;width:54px;height:54px;border-radius:16px;background:var(--wash);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:26px}
+.gift h3{font-size:var(--sub);font-weight:700;margin-bottom:6px;font-family:inherit;letter-spacing:0}
+.gift p{color:var(--ink-2)}
+.gift.hot{background:var(--accent-wash);border-color:var(--accent-line)}
+.gift.hot .em{background:#fff;border-color:var(--accent-line)}
+
+/* ---------- плашка регистрации (перед подвалом) ---------- */
+#reg{scroll-margin-top:96px}
+.reg-plate{background:var(--dark);color:#fff;border-radius:var(--radius-lg);padding:48px 52px;position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+.reg-plate::before{content:"";position:absolute;left:-6%;bottom:-60%;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,245,66,.18),transparent 70%);pointer-events:none}
+.reg-plate > *{position:relative;z-index:1}
+.reg-plate .label{color:#C9CDC2;margin-bottom:14px}
+.reg-plate h2{margin-bottom:12px}
+.reg-plate p{color:#CFD3C8;max-width:520px}
+.reg-side{display:flex;flex-direction:column;gap:14px;align-items:stretch}
+.reg-side .btn{width:100%}
+.reg-fields{list-style:none;display:flex;gap:8px;flex-wrap:wrap}
+.reg-fields li{font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#D9DCD3}
+.reg-side .fine{color:#B9BDB3}
+.reg-side .fine b{color:#fff}
+
+/* ---------- FAQ (аккордеон) ---------- */
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:18px;transition:border-color .2s ease, box-shadow .2s ease}
+.faq details[open]{border-color:#D2D6DB;box-shadow:var(--shadow)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:20px 24px;font-weight:700;font-size:var(--sub)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pl{flex-shrink:0;width:30px;height:30px;border-radius:9px;background:var(--wash);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;transition:transform .2s ease, background .2s ease}
+.faq details[open] summary .pl{transform:rotate(45deg);background:var(--accent);border-color:var(--accent-strong)}
+.faq-a{padding:0 24px 22px 70px;color:var(--ink-2)}
+
+/* ---------- footer ---------- */
+footer{background:var(--dark);color:#CFD3C8;padding:56px 0 34px}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
+.foot-brand .brand{color:#fff;margin-bottom:12px}
+.foot-brand p{opacity:.75;max-width:280px}
+.foot-col h4{color:#fff;font-size:var(--label);letter-spacing:.08em;text-transform:uppercase;margin-bottom:15px;font-weight:700}
+.foot-col a{display:block;margin-bottom:10px;text-decoration:none;opacity:.82;transition:opacity .15s ease, color .15s ease}
+.foot-col a:hover{opacity:1;color:var(--accent)}
+.foot-col a.fc{display:flex;align-items:center;gap:12px;margin-bottom:14px;opacity:1}
+.fc-ic{flex-shrink:0;width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:17px;
+  transition:background .18s ease, border-color .18s ease}
+.fc:hover .fc-ic{background:rgba(196,245,66,.16);border-color:rgba(196,245,66,.45)}
+.fc-txt{display:flex;flex-direction:column;line-height:1.3}
+.fc-lab{font-size:12px;color:#9DA197;font-weight:600}
+.fc-val{font-size:15px;color:#fff;font-weight:600;transition:color .15s ease}
+.fc:hover .fc-val{color:var(--accent)}
+.foot-hours{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font-size:13.5px;color:#9DA197;line-height:1.5}
+.foot-legal{border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-legal p{font-size:var(--fine);opacity:.6}
+
+/* ---------- cookie-плашка ---------- */
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:90;display:none;
+  align-items:center;gap:18px;padding:16px 20px;border-radius:18px;
+  background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border:1px solid var(--line);
+  box-shadow:0 20px 50px -22px rgba(16,18,20,.45);max-width:960px;margin:0 auto}
+.cookie.show{display:flex}
+.cookie p{font-size:14px;line-height:1.5;color:var(--ink);flex:1}
+.cookie a{font-weight:700;text-decoration:underline;text-decoration-color:var(--accent-strong);text-decoration-thickness:2px}
+.cookie .btn{flex-shrink:0;min-height:44px;font-size:15px;padding:0 26px;animation:none}
+
+/* ---------- modal ---------- */
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-start;justify-content:center;
+  padding:36px 16px;overflow-y:auto;background:rgba(21,23,20,.6);backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:opacity .25s ease, visibility .25s ease}
+.modal.open{opacity:1;visibility:visible}
+.modal-dialog{position:relative;width:100%;max-width:480px;background:#fff;border-radius:var(--radius-lg);
+  padding:12px 12px 6px;margin:auto;box-shadow:0 50px 110px -30px rgba(0,0,0,.6)}
+.modal-close{position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;border:none;
+  background:var(--wash);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;transition:background .15s ease}
+.modal-close:hover{background:#E6E8EB}
+.modal-head{padding:22px 24px 10px 24px}
+.modal-head .label{margin-bottom:8px}
+.modal-head h2{font-size:22px}
+.modal-body{border-radius:16px;overflow:hidden}
+.modal-body iframe{width:100%!important;border:none;display:block}
+.modal-foot{padding:14px 20px 10px;text-align:center;font-size:var(--fine);color:var(--ink-2);line-height:1.5}
+.modal-foot b{color:var(--ink)}
+
+@media(max-width:1000px){
+  .hdr-mid{display:none}
+}
+@media(max-width:900px){
+  .hdr-in{min-height:64px;padding-top:6px;padding-bottom:6px}
+  .brand-tag{display:none}
+  .hdr-cta{align-items:flex-end;gap:3px}
+  .hdr-cta .btn{min-height:42px;font-size:14px;padding:0 16px}
+  .hdr-gift{display:none}
+  .hero{padding:34px 0 56px}
+  .sec{padding:60px 0}
+  h1{font-size:clamp(26px,7vw,36px)}
+  .nw{white-space:normal}
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .hero-cta{width:100%;gap:12px}
+  .hero-cta .btn,.rt-right .btn{width:100%}
+  .date-pill{width:100%;justify-content:center}
+  .quote-card{padding:30px 24px 26px}
+  .reg-timer{grid-template-columns:1fr;padding:28px 24px;margin-top:32px}
+  .rt-left{padding-right:0;padding-bottom:24px}
+  .rt-right{padding-left:0;padding-top:24px;border-left:none;border-top:1px solid rgba(255,255,255,.12)}
+  .clock{width:100%;justify-content:space-between}
+  .unit{min-width:0;flex:1}
+  .pains,.cards,.gifts,.foot-grid{grid-template-columns:1fr}
+  .speaker{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .sp-facts li{text-align:left}
+  .reg-plate{grid-template-columns:1fr;padding:32px 24px}
+  .faq-a{padding-left:24px}
+  .foot-legal{flex-direction:column}
+  .cookie{flex-direction:column;align-items:stretch;gap:12px;padding:16px;left:12px;right:12px;bottom:12px}
+  .cookie .btn{width:100%}
+}
+</style>
+
+<!-- Yandex.Metrika counter — ПРОВЕРИТЬ: номер счётчика взят с лендинга практикума ИИ. Если для «Блогера» нужен свой, заменить 111314883 в двух местах ниже и в JS-блоке целей. -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111314883', 'ym');
+    ym(111314883, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111314883" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<!-- ===== липкая шапка ===== -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <div class="brand">
+      <img class="brand-logo" src="data:image/png;base64,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" alt="FitStars">
+      <span class="brand-tag">Блогер с нуля</span>
+    </div>
+    <div class="hdr-mid">
+      <span class="label">Онлайн-вебинар</span>
+      <span class="when"><b>15 сентября</b> · 15:00 мск</span>
+    </div>
+    <div class="hdr-cta">
+      <button type="button" class="btn btn-sm" data-modal="modal-reg">Забронировать место <span class="arw">→</span></button>
+      <span class="hdr-gift">🎁 После регистрации – интерактивный тест <b>«Твоя платформа 2026»</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== первый экран ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="label">Бесплатный онлайн-вебинар</span>
+        <h1><span class="pre">Блогер с нуля:</span>как перестать ждать идеального момента, победить самозванца и построить систему, которая <span class="mark">приносит деньги</span> на любой площадке</h1>
+        <p class="hero-lead">Прямой эфир с Викторией Ложниковой – экспертом с аудиторией 100 000+ и руководителем SMM-агентства «Контент-кухня».</p>
+        <ul class="hero-meta">
+          <li>15 сентября, вторник</li>
+          <li>15:00 мск</li>
+          <li>Бесплатно</li>
+        </ul>
+        <div class="hero-cta">
+          <button type="button" class="btn" data-modal="modal-reg">Забронировать место <span class="arw">→</span></button>
+          <span class="fine">Бесплатно · регистрация за 30 секунд</span>
+        </div>
+      </div>
+      <figure class="quote-card reveal in">
+        <span class="qm">«</span>
+        <blockquote>Блог – это не талант, а алгоритм. Представьте себя через год: вы всё ещё думаете или уже начали?</blockquote>
+        <figcaption>
+          <span class="av">ВЛ</span>
+          <span class="who">Виктория Ложникова<span>спикер вебинара</span></span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- плашка регистрации №1 + таймер -->
+    <div class="reg-timer reveal">
+      <div class="rt-left">
+        <div class="rt-when">Вебинар пройдёт <b>15 сентября в 15:00 (мск)</b></div>
+        <div class="rt-sub">До начала эфира осталось</div>
+        <div class="clock" aria-live="off">
+          <div class="unit"><b class="cd-d">00</b><span>дней</span></div>
+          <div class="unit"><b class="cd-h">00</b><span>часов</span></div>
+          <div class="unit"><b class="cd-m">00</b><span>минут</span></div>
+          <div class="unit"><b class="cd-s">00</b><span>секунд</span></div>
+        </div>
+      </div>
+      <div class="rt-right">
+        <h2>Забронируй место</h2>
+        <p>Имя, почта и телефон – регистрация занимает 30 секунд. Ссылка на эфир придёт на почту и в мессенджер.</p>
+        <button type="button" class="btn" data-modal="modal-reg">Забронировать место <span class="arw">→</span></button>
+        <span class="fine">🎁 Сразу после регистрации – интерактивный тест <b>«Твоя платформа 2026»</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== «Это про тебя, если…» ===== -->
+<section class="sec band-tint">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Узнаёшь себя?</span>
+      <h2>Это про тебя, если…</h2>
+    </div>
+    <div class="pains grid">
+      <div class="pain reveal"><span class="n">01</span><p>Откладываешь старт, потому что ждёшь <b>«идеального момента»</b> или стабильности</p></div>
+      <div class="pain reveal"><span class="n">02</span><p>Боишься камеры и того, <b>что скажут знакомые</b></p></div>
+      <div class="pain reveal"><span class="n">03</span><p>Кажется, что нужно быть <b>«особенным» или экспертом</b>, чтобы вести блог</p></div>
+      <div class="pain reveal"><span class="n">04</span><p>Пробовал(а) вести несколько площадок одновременно и <b>выгорел(а) от объёма контента</b></p></div>
+      <div class="pain full reveal"><span class="n">05</span><p>Думаешь, что с маленькой аудиторией <b>(200–500 подписчиков)</b> заработать нельзя</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== программа ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Программа</span>
+      <h2>О чём поговорим <span class="mark">на вебинаре</span></h2>
+      <p>Пять тем – от реалий рынка до первого партнёра, который платит.</p>
+    </div>
+    <div class="prog grid">
+      <div class="prog-item reveal"><span class="ck">✅</span><div><h3>Реалии рынка 2026</h3><p>Почему «глянец» и «успешный успех» больше не работают, а рутина обычного человека – мамы, учителя, эксперта – стала новым «лакшери», за которым охотятся рекламодатели.</p></div></div>
+      <div class="prog-item reveal"><span class="ck">✅</span><div><h3>Победа над самозванцем</h3><p>Как перестать бояться камеры и осуждения знакомых, и почему для старта не нужно быть «особенным» или ждать стабильности.</p></div></div>
+      <div class="prog-item reveal"><span class="ck">✅</span><div><h3>Система «Один пост – три площадки»</h3><p>Как вести MAX, ВК и Telegram, тратя всего 20–30 минут в день, и не выгорать от бесконечного производства контента.</p></div></div>
+      <div class="prog-item reveal"><span class="ck">✅</span><div><h3>Феномен «микро-алмазов»</h3><p>Как начать зарабатывать, имея всего 200–500 подписчиков, и почему бренды доверяют маленьким блогерам больше, чем миллионникам.</p></div></div>
+      <div class="prog-item reveal"><span class="ck">✅</span><div><h3>Монетизация и амбассадорство</h3><p>Как получить готового партнёра в лице FitStars и начать окупать обучение уже в первый месяц через партнёрскую программу.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== кому подойдёт ===== -->
+<section class="sec band-tint">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Для кого</span>
+      <h2>Кому подойдёт вебинар</h2>
+    </div>
+    <div class="cards grid">
+      <div class="card reveal"><div class="ic">🚀</div><h3>Тем, кто хочет начать, но откладывает</h3><p>«Жду идеального момента», «жду стабильности», «пока не готов(а)» – знакомые фразы? Разберём, что на самом деле мешает стартовать.</p></div>
+      <div class="card reveal"><div class="ic">🎭</div><h3>Начинающим с синдромом самозванца</h3><p>Боишься камеры, боишься осуждения знакомых – покажем, как выходить в эфир без «особенности» и разрешения от окружения.</p></div>
+      <div class="card reveal"><div class="ic">🔥</div><h3>Тем, кто пробовал площадки без системы</h3><p>MAX, ВК, Telegram по очереди – и выгорание от постоянного производства контента. Дадим систему, где контент делается один раз.</p></div>
+      <div class="card reveal"><div class="ic">💎</div><h3>Тем, кто не верит в свои 200–500 подписчиков</h3><p>Думаешь, зарабатывать можно только с большой аудиторией? Покажем, почему бренды выбирают маленьких блогеров.</p></div>
+    </div>
+    <div class="level reveal">
+      <span class="label">Уровень</span>
+      <p>Новички и «затянувшиеся новички» без чёткой стратегии монетизации</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== спикер ===== -->
+<section class="sec band-dark">
+  <div class="wrap speaker reveal">
+    <!-- ФОТО: когда придёт фото Виктории, заменить блок ниже на <img class="sp-photo" src="..." alt="Виктория Ложникова"> -->
+    <div class="sp-photo-ph" aria-hidden="true">
+      <span class="av">ВЛ</span>
+      <span>Фото Виктории Ложниковой</span>
+    </div>
+    <div class="sp-body">
+      <span class="label">Спикер</span>
+      <div class="sp-name">Виктория Ложникова</div>
+      <div class="sp-role">Эксперт с аудиторией 100 000+ подписчиков</div>
+      <ul class="sp-facts">
+        <li><span class="mk">✓</span><span>Руководит SMM-агентством <b>«Контент-кухня»</b></span></li>
+        <li><span class="mk">✓</span><span>Создаёт успешные стратегии продвижения <b>для брендов и экспертов</b></span></li>
+        <li><span class="mk">✓</span><span>Выступает с лекциями и мастер-классами по эффективному ведению блога как <b>член Ассоциации спикеров СНГ</b></span></li>
+      </ul>
+      <div class="sp-accent">«Блог – это не талант, а алгоритм. <span class="mark">Представьте себя через год</span>: вы всё ещё думаете или уже начали?»</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== что получат участники ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Результат</span>
+      <h2>Что ты получишь <span class="mark">на вебинаре</span></h2>
+    </div>
+    <div class="gifts grid">
+      <div class="gift reveal"><div class="em">🗺️</div><div><h3>Твёрдый план действий</h3><p>Пошаговый алгоритм перехода из точки «боюсь начать» в точку «регулярно публикую и зарабатываю».</p></div></div>
+      <div class="gift reveal"><div class="em">💰</div><div><h3>Доступ к фонду талантов</h3><p>Как лучшие ученики получают от 10 000 до 30 000 рублей на развитие своего блога.</p></div></div>
+      <div class="gift reveal"><div class="em">🎟️</div><div><h3>Эксклюзивное предложение</h3><p>Специальные условия на курс и возможность зайти на тест-драйв – демо-доступ к системе, чтобы «попробовать продукт на вкус» без риска.</p></div></div>
+      <div class="gift hot reveal"><div class="em">🎁</div><div><h3>Подарок за присутствие на эфире</h3><p>Чек-лист по настройке канала в MAX – самой быстрорастущей соцсети.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== плашка регистрации №2 ===== -->
+<section class="sec band-tint">
+  <div class="wrap">
+    <div id="reg"></div>
+    <div class="reg-plate reveal">
+      <div>
+        <span class="label">Регистрация</span>
+        <h2>Забронируй место на вебинаре</h2>
+        <p>15 сентября, вторник, 15:00 мск. Бесплатно. Запись планируется, но вопросы спикеру можно задать только в прямом эфире.</p>
+      </div>
+      <div class="reg-side">
+        <ul class="reg-fields"><li>Имя</li><li>Email</li><li>Телефон</li></ul>
+        <button type="button" class="btn" data-modal="modal-reg">Забронировать место <span class="arw">→</span></button>
+        <span class="fine">🎁 После регистрации – интерактивный тест <b>«Твоя платформа 2026»</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="label">Вопросы</span>
+      <h2>Частые вопросы</h2>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary><span class="pl">+</span>Это точно бесплатно?</summary>
+        <div class="faq-a">Да. Участие в вебинаре бесплатное – нужно только зарегистрироваться.</div>
+      </details>
+      <details>
+        <summary><span class="pl">+</span>Что если не смогу быть в прямом эфире – будет ли запись?</summary>
+        <div class="faq-a">Запись планируется, но лучше присутствовать вживую, чтобы задать вопросы спикеру.</div>
+      </details>
+      <details>
+        <summary><span class="pl">+</span>Что такое «Тест-драйв» и чем он отличается от полного курса?</summary>
+        <div class="faq-a">Это мини-версия основного курса, которую можно попробовать без рисков для себя и понять, что такое блогинг.</div>
+      </details>
+      <details>
+        <summary><span class="pl">+</span>Как получить доступ к фонду талантов?</summary>
+        <div class="faq-a">Для этого необходимо быть учеником курса «Блогер с нуля».</div>
+      </details>
+      <details>
+        <summary><span class="pl">+</span>Нужна ли подготовка перед вебинаром?</summary>
+        <div class="faq-a">Нет. Главное – хорошее настроение и стабильный интернет.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== подвал ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <img class="brand-logo" src="data:image/png;base64,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" alt="FitStars">
+        </div>
+        <p>Вебинар «Блогер с нуля» · 15 сентября, 15:00 мск</p>
+      </div>
+      <div class="foot-col">
+        <h4>Документы</h4>
+        <!-- ССЫЛКИ: заменить на документы курса «Блогер с нуля» (сейчас – заглушки по образцу практикума ИИ) -->
+        <a href="https://influencerexpert.ru/oferta" target="_blank" rel="noopener">Публичная оферта</a>
+        <a href="https://influencerexpert.ru/politik" target="_blank" rel="noopener">Политика конфиденциальности</a>
+        <a href="https://influencerexpert.ru/politika_soglasie" target="_blank" rel="noopener">Согласие на обработку персональных данных</a>
+        <a href="https://influencerexpert.ru/sogl" target="_blank" rel="noopener">Согласие на рекламную рассылку</a>
+      </div>
+      <div class="foot-col">
+        <h4>Отдел заботы</h4>
+        <a class="fc" href="mailto:info@influencerexpert.ru">
+          <span class="fc-ic">✉️</span>
+          <span class="fc-txt"><span class="fc-lab">Написать нам</span><span class="fc-val">info@influencerexpert.ru</span></span>
+        </a>
+        <a class="fc" href="https://t.me/zabota_kurs" target="_blank" rel="noopener">
+          <span class="fc-ic">💬</span>
+          <span class="fc-txt"><span class="fc-lab">Telegram</span><span class="fc-val">@zabota_kurs</span></span>
+        </a>
+        <a class="fc" href="https://max.ru/u/f9LHodD0cOLBNUlz52g1kNrr_QRGfwKKW8ds68GRBNXrQWYT17Pvb36qD4w" target="_blank" rel="noopener">
+          <span class="fc-ic">📱</span>
+          <span class="fc-txt"><span class="fc-lab">MAX</span><span class="fc-val">Написать в мессенджер</span></span>
+        </a>
+        <div class="foot-hours">Отвечаем ежедневно, 10:00–20:00 (мск)</div>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>ИП Капустин Илья Алексеевич · ИНН 781624617340 · ОГРНИП 312784720500712</p>
+      <p>© 2026 FitStars · Курс «Блогер с нуля»</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== cookie-плашка ===== -->
+<div class="cookie" id="cookieBar" role="region" aria-label="Использование cookies">
+  <p>Мы используем файлы cookies, в том числе для аналитики с помощью Яндекс Метрики. Продолжая использовать сайт, вы соглашаетесь с их использованием. Подробнее в <a href="https://influencerexpert.ru/politik" target="_blank" rel="noopener">Политике конфиденциальности</a>.</p>
+  <button type="button" class="btn" id="cookieOk">Принять</button>
+</div>
+
+<!-- ===== модалка с виджетом GetCourse ===== -->
+<div class="modal" id="modal-reg" role="dialog" aria-modal="true" aria-label="Регистрация на вебинар">
+  <div class="modal-dialog">
+    <button class="modal-close" data-close aria-label="Закрыть">&times;</button>
+    <div class="modal-head">
+      <span class="label">Онлайн-вебинар · 15 сентября, 15:00 мск</span>
+      <h2>Забронируй место</h2>
+    </div>
+    <div class="modal-body">
+      <!-- GetCourse widget: регистрация на вебинар «Блогер с нуля» -->
+      <script id="6e4e156ceff13b7f8250259b0c6117900eee58e2" src="https://influencerexpert.ru/pl/lite/widget/script?id=1652223"></script>
+    </div>
+    <div class="modal-foot">🎁 После регистрации – интерактивный тест <b>«Твоя платформа 2026»</b> и ссылка на эфир</div>
+  </div>
+</div>
+
+<script>
+// тень липкой шапки
+(function(){var h=document.getElementById('hdr');
+  var on=function(){h.classList.toggle('stuck',window.scrollY>8)};on();
+  window.addEventListener('scroll',on,{passive:true});})();
+
+// scroll-reveal
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+  },{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+// модалка: открыть / закрыть
+(function(){
+  function open(id){var m=document.getElementById(id);if(m){m.classList.add('open');document.body.style.overflow='hidden'}}
+  function closeAll(){document.querySelectorAll('.modal.open').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''}
+  document.querySelectorAll('[data-modal]').forEach(function(b){b.addEventListener('click',function(){open(b.getAttribute('data-modal'))})});
+  document.querySelectorAll('.modal').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m||e.target.hasAttribute('data-close'))closeAll()})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
+})();
+
+// cookie-плашка: показываем один раз, выбор запоминаем
+(function(){
+  var KEY='fsblog_cookie_ok', bar=document.getElementById('cookieBar'), btn=document.getElementById('cookieOk');
+  if(!bar||!btn) return;
+  var accepted=false;
+  try{ accepted = localStorage.getItem(KEY)==='1' }catch(e){}
+  if(!accepted) setTimeout(function(){ bar.classList.add('show') }, 900);
+  btn.addEventListener('click', function(){
+    try{ localStorage.setItem(KEY,'1') }catch(e){}
+    bar.classList.remove('show');
+  });
+})();
+
+// цели Яндекс.Метрики
+(function(){
+  var ID=111314883;
+  function goal(name){ if(typeof ym==='function'){ try{ ym(ID,'reachGoal',name) }catch(e){} } }
+  document.querySelectorAll('[data-modal]').forEach(function(b){
+    b.addEventListener('click',function(){ goal('open_reg_form') });
+  });
+})();
+
+// честный таймер: считает до фиксированной даты, переживает перезагрузку
+(function(){
+  var target=new Date('2026-09-15T15:00:00+03:00').getTime();
+  var D=document.querySelectorAll('.cd-d'),H=document.querySelectorAll('.cd-h'),M=document.querySelectorAll('.cd-m'),S=document.querySelectorAll('.cd-s');
+  function p(n){return String(n).padStart(2,'0')}
+  function set(list,v){list.forEach(function(el){el.textContent=v})}
+  function tick(){var diff=target-Date.now();if(diff<0)diff=0;
+    set(D,p(Math.floor(diff/86400000)));set(H,p(Math.floor(diff%86400000/3600000)));
+    set(M,p(Math.floor(diff%3600000/60000)));set(S,p(Math.floor(diff%60000/1000)));}
+  tick();setInterval(tick,1000);
+})();
+
+// авто-высота при встраивании в iframe (Tilda / GetCourse)
+(function(){
+  function h(){try{parent.postMessage({fsblogHeight:document.documentElement.scrollHeight},'*')}catch(e){}}
+  window.addEventListener('load',h);window.addEventListener('resize',h);
+  if(window.ResizeObserver){try{new ResizeObserver(h).observe(document.body)}catch(e){}}
+  setInterval(h,1200);
+})();
+</script>
+</body>
+</html>
